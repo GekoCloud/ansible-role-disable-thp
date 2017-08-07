@@ -20,4 +20,16 @@ case $1 in
     echo 'never' > /sys/kernel/mm/transparent_hugepage/defrag
 
     ;;
+  status)
+
+    read e_always e_madvise e_never < /sys/kernel/mm/transparent_hugepage/enabled
+    read d_always d_madvise d_never < /sys/kernel/mm/transparent_hugepage/defrag
+
+    if [ "$e_never" != "[never]" ] || [ "$d_never" != "[never]" ]; then
+      exit 1
+    fi
+
+    echo "OK"
+    exit 0
+    ;;
 esac

@@ -1,9 +1,6 @@
-- name: Reload systemctl
-  shell: >
-    systemctl daemon-reload
-
 - name: Ensure disable-thp is {{ disable_thp_state }} and enabled at boot
-  service:
+  systemd:
     name: 'disable-thp'
     state: '{{ disable_thp_state }}'
     enabled: 'yes'
+    daemon_reload: 'yes'
