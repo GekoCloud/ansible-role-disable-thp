@@ -22,11 +22,12 @@ case $1 in
     ;;
   status)
 
-    read e_always e_madvise e_never < /sys/kernel/mm/transparent_hugepage/enabled
-#    read d_always d_defer d_madvise d_never < /sys/kernel/mm/transparent_hugepage/defrag
-    read d_always d_madvise d_never < /sys/kernel/mm/transparent_hugepage/defrag
+    grep -q '\[never\]' /sys/kernel/mm/transparent_hugepage/enabled
+    s_enabled=$?
+    grep -q '\[never\]' /sys/kernel/mm/transparent_hugepage/defrag
+    s_defrag=$?
 
-    if [ "$e_never" != "[never]" ] || [ "$d_never" != "[never]" ]; then
+    if [ "${s_enabled}" != "0" ] || [ "${s_defrag}" != "0" ]; then
       exit 1
     fi
 
