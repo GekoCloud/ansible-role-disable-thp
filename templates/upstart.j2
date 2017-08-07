@@ -23,7 +23,7 @@ case $1 in
   status)
 
     read e_always e_madvise e_never < /sys/kernel/mm/transparent_hugepage/enabled
-    read d_always d_madvise d_never < /sys/kernel/mm/transparent_hugepage/defrag
+    read d_always d_defer d_madvise d_never < /sys/kernel/mm/transparent_hugepage/defrag
 
     if [ "$e_never" != "[never]" ] || [ "$d_never" != "[never]" ]; then
       exit 1

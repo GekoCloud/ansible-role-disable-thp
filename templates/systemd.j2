@@ -8,6 +8,7 @@ Before={{ disable_thp_before_service }}.service
 Type=oneshot
 ExecStart=/bin/bash -c 'echo never > /sys/kernel/mm/transparent_hugepage/enabled'
 ExecStart=/bin/bash -c 'echo never > /sys/kernel/mm/transparent_hugepage/defrag'
+RemainAfterExit=yes
 
 [Install]
 {% if disable_thp_before_service is defined %}
