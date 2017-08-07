@@ -1,0 +1,2 @@
+disable_thp_before_service: 'mongod'
+disable_thp_state: 'stopped'

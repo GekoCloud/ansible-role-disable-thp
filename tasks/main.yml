@@ -1,0 +1,16 @@
+---
+# tasks file for disable-thp
+
+- name: Create init script
+  template:
+    src: '{{ disable_thp_init_system }}.j2'
+    dest: '{{ disable_thp_script[disable_thp_init_system] }}'
+    owner: 'root'
+    group: 'root'
+    mode: '{{ disable_thp_mode[disable_thp_init_system] }}'
+  tags:
+    - disable_thp
+
+- include: '{{ disable_thp_init_system }}.yml'
+  tags:
+    - disable_thp

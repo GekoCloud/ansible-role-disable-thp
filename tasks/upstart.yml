@@ -1,0 +1,5 @@
+- name: Ensure disable-thp is {{ disable_thp_state }} and enabled at boot
+  service:
+    name: 'disable-thp'
+    state: '{{ disable_thp_state }}'
+    enabled: 'yes'

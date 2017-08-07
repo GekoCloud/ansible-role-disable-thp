@@ -1,0 +1,5 @@
+---
+# defaults file for disable-thp
+
+disable_thp_init_system: 'systemd'
+disable_thp_state: 'started'

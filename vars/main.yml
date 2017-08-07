@@ -1,0 +1,10 @@
+---
+# vars file for disable-thp
+
+disable_thp_script:
+  upstart: '/etc/init.d/disable-thp'
+  systemd: '/lib/systemd/system/disable-thp.service'
+
+disable_thp_mode:
+  upstart: '0755'
+  systemd: '0644'

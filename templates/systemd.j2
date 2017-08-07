@@ -1,0 +1,15 @@
+[Unit]
+Description="Disable Linux transparent huge pages"
+{% if disable_thp_before_service is defined %}
+Before={{ disable_thp_before_service }}.service
+{% endif %}
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c 'echo never > /sys/kernel/mm/transparent_hugepage/enabled'
+ExecStart=/bin/bash -c 'echo never > /sys/kernel/mm/transparent_hugepage/defrag'
+
+[Install]
+{% if disable_thp_before_service is defined %}
+RequiredBy={{ disable_thp_before_service }}.service
+{% endif %}

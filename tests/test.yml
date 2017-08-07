@@ -1,0 +1,22 @@
+- hosts: travis-trusty
+  connection: docker
+  remote_user: root
+  pre_tasks:
+    - name: Include test vars
+      include_vars: 'test-vars.yml'
+  roles:
+    - {
+      role: ansible-role-disable-thp,
+      disable_thp_init_system: 'upstart'
+    }
+
+- hosts: travis-xenial
+  connection: docker
+  remote_user: root
+  pre_tasks:
+    - name: Include test vars
+      include_vars: 'test-vars.yml'
+  roles:
+    - {
+      role: ansible-role-disable-thp
+    }
