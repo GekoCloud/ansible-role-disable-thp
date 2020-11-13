@@ -16,4 +16,6 @@ galaxy_info:
     - ubuntu
     - thp
 
+  role_name: disable_thp
+
 dependencies: []
