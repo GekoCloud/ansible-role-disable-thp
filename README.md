@@ -16,7 +16,7 @@ Example Playbook
     - hosts: servers
       roles:
         - {
-          role: disable-thp,
+          role: disable_thp,
           disable_thp_before_service: 'mongod'
         }
 
